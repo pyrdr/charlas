@@ -1,0 +1,17 @@
+Idea sketch:
+
+- (unbiased) estimation of generalization _error_
+	+ what happens when you measure and *then* change something
+	+ evaluation protocols
+	+ train, validate, test
+	+ cross validation
+	+ repeated cross validation
+	+ nested cross validation
+
+- data driven decisions
+	+ feature selection/extraction, engineering
+		. consequences of using the entire data set for transformations
+	+ learner selection
+	+ hyperparameter selection
+	+ model selection
+	
