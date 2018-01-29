@@ -1,64 +1,8 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="chrome=1" />
-
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-<title>model_selection slides</title>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<head><meta charset="utf-8" />
+<title>model_selection</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-<!-- General and theme style sheets -->
-<link rel="stylesheet" href="reveal.js/css/reveal.css">
-<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
-
-<!-- If the query includes 'print-pdf', include the PDF print sheet -->
-<script>
-if( window.location.search.match( /print-pdf/gi ) ) {
-        var link = document.createElement( 'link' );
-        link.rel = 'stylesheet';
-        link.type = 'text/css';
-        link.href = 'reveal.js/css/print/pdf.css';
-        document.getElementsByTagName( 'head' )[0].appendChild( link );
-}
-
-</script>
-
-<!--[if lt IE 9]>
-<script src="reveal.js/lib/js/html5shiv.js"></script>
-<![endif]-->
-
-<!-- Loading the mathjax macro -->
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-            processEscapes: true,
-            processEnvironments: true
-        },
-        // Center justify equations in code and markdown cells. Elsewhere
-        // we use CSS to left justify single line equations in code cells.
-        displayAlign: 'center',
-        "HTML-CSS": {
-            styles: {'.MathJax_Display': {"margin": 0}},
-            linebreaks: { automatic: true }
-        }
-    });
-    </script>
-    <!-- End of mathjax configuration -->
-
-<!-- Get Font-awesome from cdn -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.css">
 
 <style type="text/css">
     /*!
@@ -11774,133 +11718,59 @@ ul.typeahead-list > li > a {
 
 <style type="text/css">
 /* Overrides of notebook CSS for static HTML export */
-.reveal {
-  font-size: 160%;
+body {
+  overflow: visible;
+  padding: 8px;
 }
-.reveal pre {
-  width: inherit;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
-}
-.reveal pre code {
-  padding: 0px;
-}
-.reveal section img {
-  border: 0px solid black;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0);
-}
-.reveal i {
-  font-style: normal;
-  font-family: FontAwesome;
-  font-size: 2em;
-}
-.reveal .slides {
-  text-align: left;
-}
-.reveal.fade {
-  opacity: 1;
-}
-.reveal .progress {
-  position: static;
-}
-.reveal .controls .navigate-left,
-.reveal .controls .navigate-left.enabled {
-  border-right-color: #727272;
-}
-.reveal .controls .navigate-left.enabled:hover,
-.reveal .controls .navigate-left.enabled.enabled:hover {
-  border-right-color: #dfdfdf;
-}
-.reveal .controls .navigate-right,
-.reveal .controls .navigate-right.enabled {
-  border-left-color: #727272;
-}
-.reveal .controls .navigate-right.enabled:hover,
-.reveal .controls .navigate-right.enabled.enabled:hover {
-  border-left-color: #dfdfdf;
-}
-.reveal .controls .navigate-up,
-.reveal .controls .navigate-up.enabled {
-  border-bottom-color: #727272;
-}
-.reveal .controls .navigate-up.enabled:hover,
-.reveal .controls .navigate-up.enabled.enabled:hover {
-  border-bottom-color: #dfdfdf;
-}
-.reveal .controls .navigate-down,
-.reveal .controls .navigate-down.enabled {
-  border-top-color: #727272;
-}
-.reveal .controls .navigate-down.enabled:hover,
-.reveal .controls .navigate-down.enabled.enabled:hover {
-  border-top-color: #dfdfdf;
-}
-.reveal .progress span {
-  background: #727272;
-}
-div.input_area {
-  padding: 0.06em;
-}
-div.code_cell {
-  background-color: transparent;
-}
-div.prompt {
-  width: 11ex;
-  padding: 0.4em;
-  margin: 0px;
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-  text-align: right;
-}
-div.output_area pre {
-  font-family: monospace, sans-serif;
-  font-size: 80%;
-}
-div.output_prompt {
-  /* 5px right shift to account for margin in parent container */
-  margin: 5px 5px 0 0;
-}
-div.text_cell.rendered .rendered_html {
-  /* The H1 height seems miscalculated, we are just hidding the scrollbar */
-  overflow-y: hidden;
-}
-a.anchor-link {
-  /* There is still an anchor, we are only hidding it */
-  display: none;
-}
-.rendered_html p {
-  text-align: inherit;
-}
-::-webkit-scrollbar
-{
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar *
-{
-  background:transparent;
-}
-::-webkit-scrollbar-thumb
-{
-  background: #727272 !important;
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
+}@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
 }
 </style>
 
 <!-- Custom stylesheet, it must be in the same directory as the html file -->
 <link rel="stylesheet" href="custom.css">
 
-</head>
-
-
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration --></head>
 <body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
 
-
-<div class="reveal">
-<div class="slides">
-<section><section>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11908,7 +11778,7 @@ a.anchor-link {
 <h1 id="Introduccion-a-la-evaluacion-y-seleccion-de-modelos">Introduccion a la evaluacion y seleccion de modelos<a class="anchor-link" href="#Introduccion-a-la-evaluacion-y-seleccion-de-modelos">&#182;</a></h1><h3 id="Metodolog&#237;as-aplicables-en-aprendizaje-supervisado">Metodolog&#237;as aplicables en aprendizaje supervisado<a class="anchor-link" href="#Metodolog&#237;as-aplicables-en-aprendizaje-supervisado">&#182;</a></h3>
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11926,7 +11796,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11946,7 +11816,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11973,7 +11843,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -11993,7 +11863,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12004,7 +11874,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12051,7 +11921,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12082,7 +11952,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12091,7 +11961,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12100,7 +11970,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12113,7 +11983,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12132,7 +12002,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12148,7 +12018,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12168,7 +12038,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12177,7 +12047,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12190,7 +12060,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12199,7 +12069,7 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section><section><section>
+</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
@@ -12226,6 +12096,122 @@ a.anchor-link {
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="k">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">skew</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">boxcox1p</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">transform</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Encapsular las transformaciones y limpiezas realizadas en charla previa</span>
+
+<span class="sd">    Asumiendo que X es un DataFrame y sin validación alguna</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s2">&quot;Id&quot;</span><span class="p">,</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="c1"># Eliminamos los outliers</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">X</span><span class="p">[(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;GrLivArea&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">4000</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">300000</span><span class="p">)]</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+    <span class="c1"># Empleamos la función log1p de numpy para obtener el log(1+x) de todos los elementos de la variable objetivo</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s2">&quot;SalePrice&quot;</span><span class="p">])</span>
+    <span class="c1"># Eliminamos la variable a predecir</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;PoolQC&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;PoolQC&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;MiscFeature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;MiscFeature&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Alley&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Alley&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Fence&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Fence&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;FireplaceQu&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;FireplaceQu&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;GarageType&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageFinish&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageQual&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageCond&#39;</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+    <span class="c1"># </span>
+    <span class="c1"># Agrupamos por vecindario y completamos los valores perdidos con la mediana de LotFrontage para todos los vecindarios</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;LotFrontage&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;Neighborhood&quot;</span><span class="p">)[</span><span class="s2">&quot;LotFrontage&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">median</span><span class="p">()))</span>
+    <span class="c1">#</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;GarageYrBlt&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageArea&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageCars&#39;</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1">#    </span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;BsmtFinSF1&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtFinSF2&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtUnfSF&#39;</span><span class="p">,</span><span class="s1">&#39;TotalBsmtSF&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtFullBath&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtHalfBath&#39;</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;BsmtQual&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtCond&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtExposure&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtFinType1&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtFinType2&#39;</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;MasVnrType&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;MasVnrType&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;MasVnrArea&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;MasVnrArea&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MSZoning&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MSZoning&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;MSZoning&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Utilities&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Functional&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s2">&quot;Functional&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;Typ&quot;</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Electrical&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Electrical&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;Electrical&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;KitchenQual&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;KitchenQual&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;KitchenQual&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Exterior1st&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Exterior1st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;Exterior1st&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Exterior2nd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;Exterior2nd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;Exterior2nd&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;SaleType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;SaleType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;SaleType&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MSSubClass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MSSubClass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">&quot;None&quot;</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="c1"># MSSubClass = El tipo de edificios</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MSSubClass&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MSSubClass&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="c1"># OverallCond</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;OverallCond&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;OverallCond&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="c1"># Año y mes de venta.</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;YrSold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;YrSold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MoSold&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;MoSold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;FireplaceQu&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtQual&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtCond&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageQual&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageCond&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;ExterQual&#39;</span><span class="p">,</span> <span class="s1">&#39;ExterCond&#39;</span><span class="p">,</span><span class="s1">&#39;HeatingQC&#39;</span><span class="p">,</span> <span class="s1">&#39;PoolQC&#39;</span><span class="p">,</span> <span class="s1">&#39;KitchenQual&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtFinType1&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;BsmtFinType2&#39;</span><span class="p">,</span> <span class="s1">&#39;Functional&#39;</span><span class="p">,</span> <span class="s1">&#39;Fence&#39;</span><span class="p">,</span> <span class="s1">&#39;BsmtExposure&#39;</span><span class="p">,</span> <span class="s1">&#39;GarageFinish&#39;</span><span class="p">,</span> <span class="s1">&#39;LandSlope&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;LotShape&#39;</span><span class="p">,</span> <span class="s1">&#39;PavedDrive&#39;</span><span class="p">,</span> <span class="s1">&#39;Street&#39;</span><span class="p">,</span> <span class="s1">&#39;Alley&#39;</span><span class="p">,</span> <span class="s1">&#39;CentralAir&#39;</span><span class="p">,</span> <span class="s1">&#39;MSSubClass&#39;</span><span class="p">,</span> <span class="s1">&#39;OverallCond&#39;</span><span class="p">,</span> 
+            <span class="s1">&#39;YrSold&#39;</span><span class="p">,</span> <span class="s1">&#39;MoSold&#39;</span><span class="p">)</span>
+    <span class="c1"># procesa columnas, applicando LabelEncoder a los atributos categóricos</span>
+    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+        <span class="n">lbl</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span> 
+        <span class="n">lbl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span> 
+        <span class="n">X</span><span class="p">[</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="n">lbl</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">c</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
+    <span class="c1">#</span>
+    <span class="c1"># Adicionamos el total de pies cuadrados (TotalSF) de la vivienda</span>
+    <span class="n">X</span><span class="p">[</span><span class="s1">&#39;TotalSF&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;TotalBsmtSF&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;1stFlrSF&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;2ndFlrSF&#39;</span><span class="p">]</span>
+    <span class="c1">#</span>
+    <span class="n">numeric_feats</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">dtypes</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">dtypes</span> <span class="o">!=</span> <span class="s2">&quot;object&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">index</span>
+    <span class="c1"># Verificamos el sesgo de todos los atributos numéricos</span>
+    <span class="n">skewed_feats</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">numeric_feats</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">skew</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dropna</span><span class="p">()))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">skewness</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Skew&#39;</span> <span class="p">:</span><span class="n">skewed_feats</span><span class="p">})</span>
+    <span class="c1">#</span>
+    <span class="n">skewness</span> <span class="o">=</span> <span class="n">skewness</span><span class="p">[</span><span class="nb">abs</span><span class="p">(</span><span class="n">skewness</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0.75</span><span class="p">]</span>
+    <span class="n">skewed_features</span> <span class="o">=</span> <span class="n">skewness</span><span class="o">.</span><span class="n">index</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="mf">0.15</span>
+    <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">skewed_features</span><span class="p">:</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">feat</span><span class="p">]</span> <span class="o">=</span> <span class="n">boxcox1p</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">feat</span><span class="p">],</span> <span class="n">lam</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="c1">#</span>
+    <span class="k">return</span> <span class="n">X</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -12503,74 +12489,12 @@ a.anchor-link {
 
 </div>
 </div>
-</div></section></section>
 </div>
-</div>
-
-<script>
-
-require(
-    {
-      // it makes sense to wait a little bit when you are loading
-      // reveal from a cdn in a slow connection environment
-      waitSeconds: 15
-    },
-    [
-      "reveal.js/lib/js/head.min.js",
-      "reveal.js/js/reveal.js"
-    ],
-
-    function(head, Reveal){
-
-        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-
-            transition: "slide",
-
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                { src: "reveal.js/lib/js/classList.js",
-                  condition: function() { return !document.body.classList; } },
-                { src: "reveal.js/plugin/notes/notes.js",
-                  async: true,
-                  condition: function() { return !!document.body.classList; } }
-            ]
-        });
-
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
-
-        Reveal.addEventListener('slidechanged', update);
-
-        function setScrollingSlide() {
-            var scroll = false
-            if (scroll === true) {
-              var h = $('.reveal').height() * 0.95;
-              $('section.present').find('section')
-                .filter(function() {
-                  return $(this).height() > h;
-                })
-                .css('height', 'calc(95vh)')
-                .css('overflow-y', 'scroll')
-                .css('margin-top', '20px');
-            }
-        }
-
-        // check and set the scrolling slide every time the slide change
-        Reveal.addEventListener('slidechanged', setScrollingSlide);
-
-    }
-
-);
-</script>
-
+    </div>
+  </div>
 </body>
+
+ 
 
 
 </html>
