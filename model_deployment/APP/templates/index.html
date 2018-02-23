@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="//cdn.muicss.com/mui-0.9.35/css/mui.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+    <script src="//cdn.muicss.com/mui-0.9.35/js/mui.min.js"></script>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 300px;
+            width: 500px;
+        }
+
+        /* Optional: Makes the sample page fill the window. */
+
+        #description {
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+        }
+
+        #infowindow-content .title {
+            font-weight: bold;
+        }
+
+        #infowindow-content {
+            display: none;
+        }
+
+        #map #infowindow-content {
+            display: inline;
+        }
+
+        .pac-card {
+            margin: 10px 10px 0 0;
+            border-radius: 2px 0 0 2px;
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            outline: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            background-color: #fff;
+            font-family: Roboto;
+        }
+
+        #pac-container {
+            padding-bottom: 12px;
+            margin-right: 12px;
+        }
+
+        .pac-controls {
+            display: inline-block;
+            padding: 5px 11px;
+        }
+
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
+
+        .bg {
+            text-shadow: -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+            color: white;
+        }
+
+        #pac-input {
+            background-color: #fff;
+            font-family: Roboto;
+            font-size: 15px;
+            font-weight: 300;
+            margin-left: 12px;
+            padding: 0 11px 0 13px;
+            text-overflow: ellipsis;
+            width: 250px;
+        }
+
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
+
+        #title {
+            color: #fff;
+            background-color: #4d90fe;
+            font-size: 25px;
+            font-weight: 500;
+            padding: 6px 12px;
+        }
+
+        #target {
+            width: 300px;
+        }
+    </style>
+    <title>APP</title>
+</head>
+<body>
+<div class="mui-container">
+    <h1>Form Casa</h1>
+    <form class="mui-form">
+
+
+        <div class="mui-select">
+            <select>
+                <option>Apartamentos</option>
+                <option>Villas</option>
+                <option>Casas</option>
+                <option>Vivienda Compartida</option>
+                <option>Penthouse</option>
+                <option>Solares</option>
+                <option>Otros</option>
+            </select>
+            <label>Categoria de Hogar</label>
+        </div>
+        <div class="mui-textfield">
+            <textarea></textarea>
+            <label>Descripción</label>
+
+        </div>
+        <div class="mui-textfield">
+            <input type="number">
+            <label>Número de Habitaciones</label>
+        </div>
+        <div class="mui-textfield">
+            <input type="number">
+            <label>Número de Baños</label>
+        </div>
+        <div class="mui-textfield">
+            <input type="number">
+            <label>Area de Construcción (m^2)</label>
+        </div>
+        <div class="mui-textfield">
+            <input type="number">
+            <label>Area de Solar (m^2)</label>
+        </div>
+        <input id="pac-input" class="controls" type="text" placeholder="Escribe la Dirección o Sitio">
+        <div id="map">
+
+        </div>
+        <button type="submit" class="mui-btn mui-btn--raised">Submit</button>
+    </form>
+</div>
+
+
+</body>
+<script type="text/javascript">
+    var frm = $('#Predict');
+    var lat;
+    var lng;
+
+    frm.click(function () {
+        $.ajax({
+            type: 'POST',
+            url: "localhost/5000?",
+            data: {'latitud': lat, 'longitud': lng, 'hora': hora},
+            dataType: 'json',
+            success: function (data) {
+                var json = data;
+                var mensaje = "El tiempo aproximado de duracion del viaje es: ";
+                $("#result").html(mensaje + json['prediction'] + " minutos.");
+            },
+            error: function (data) {
+                $("#MESSAGE-DIV").html("Something went wrong!");
+            }
+        });
+        return false;
+    });
+
+
+    function initAutocomplete() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 18.487876, lng: -69.96229199999999},
+            zoom: 15,
+            mapTypeId: 'roadmap'
+        });
+
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('pac-input');
+        var searchBox = new google.maps.places.SearchBox(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function () {
+            searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function () {
+            var places = searchBox.getPlaces();
+
+            if (places.length == 0) {
+                return;
+            }
+
+            // Clear out the old markers.
+            markers.forEach(function (marker) {
+                marker.setMap(null);
+            });
+            markers = [];
+
+            // For each place, get the icon, name and location.
+            var bounds = new google.maps.LatLngBounds();
+            places.forEach(function (place) {
+                if (!place.geometry) {
+                    console.log("Returned place contains no geometry");
+                    return;
+                }
+                var icon = {
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(25, 25)
+                };
+
+                // Create a marker for each place.
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location
+                }));
+
+                lat = markers[0].getPosition().lat();
+                lng = markers[0].getPosition().lng();
+                console.log(markers[0])
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            map.fitBounds(bounds);
+        });
+    }
+
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB6nEb3w16YN08QthPbwgkxsQVlGc4rYIU&libraries=places&callback=initAutocomplete"
+        async defer></script>
+</html>
