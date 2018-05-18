@@ -1,8 +1,8 @@
-Para trabajar sobre el notebook time_series_r.ipynb es preciso instalar:
+Para trabajar sobre el notebook **time_series_r.ipynb** es preciso instalar:
 
-[Anaconda](https://www.anaconda.com/download/) 
+[](https://www.anaconda.com/download/) 
 
-Si no quieren que el R de Anaconda interfiere que el R de su maquina local, crear un environment:
+Si no quieren que el R de Anaconda interfiera con el de su maquina local, crear un *environment**:
 
 ```conda
 conda info --envs
@@ -26,10 +26,13 @@ conda install -c r r-devtools
 conda install -c r r-irdisplay
 ```
 
-En el R de Anaconda:
-IRkernel::installspec()  # para registrar el kernel en la instalación de R
+Para registrar el kernel en jupyter, correr en la instalación de R de Anaconda:
+```R
+IRkernel::installspec()
+```  
 
-Paquetes de R a instalar en distribucion Anaconda. Nota: Anaconda les coloca un prefijo "r-" a los paquetes de su distribucion
+Paquetes de R a instalar en distribucion Anaconda. 
+*Nota*: Anaconda les coloca un prefijo "r-" a los paquetes de su distribución.
 Si no encuentran dicho paquete en Anaconda instalar normal en el ambiente R de Anaconda usando CRAN (https://cran.r-project.org/web/packages/index.html)
 
 ```conda
