@@ -1,16 +1,11 @@
 from sklearn.externals import joblib
 import unicodedata
-from nltk.stem.snowball import SpanishStemmer
 import re
-import nltk
 from sklearn.externals import joblib
 import pandas as pd
 import os
 import json
 import urllib
-
-spanish_stops = set(nltk.corpus.stopwords.words('Spanish'))
-stemmer = SpanishStemmer()
 
 path = os.path.dirname(os.path.abspath(__file__)) + "\\"
 
