@@ -1,6 +1,8 @@
-# Para trabajar sobre el notebook **time_series_r.ipynb**
+## Para trabajar sobre el notebook **time_series_r.ipynb**
 
-[](https://www.anaconda.com/download/) 
+Instalar Anaconda:
+
+https://www.anaconda.com/download/
 
 Si no quieren que el R de Anaconda interfiera con el de su máquina local, crear un *environment*:
 
