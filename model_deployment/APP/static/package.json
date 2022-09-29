@@ -14,7 +14,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
-    "d3": "^4.13.0",
+    "d3": "^7.6.1",
     "emotion": "^9.0.1",
     "eslint-config-react-tools": "^1.0.10",
     "google-maps-react": "^1.1.2",
@@ -42,7 +42,7 @@
     "reactcss": "^1.2.3",
     "redux": "^3.7.2",
     "redux-axios-middleware": "^4.0.0",
-    "victory": "^0.24.2"
+    "victory": "^36.6.8"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
